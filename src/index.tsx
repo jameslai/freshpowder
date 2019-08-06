@@ -1,16 +1,19 @@
 /* Vendor */
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Switch } from "react-router";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 
 /* Internal */
 import { rootReducer } from "./reducers";
 
+/* Hard imported loader */
+import Loading from "./Loading/Loading";
+
 /* Lazy loaded major sections */
-const Dashboard = React.lazy(() => import("./Dashboard/Dashboard"));
-const Databases = React.lazy(() => import("./Databases/Databases"));
+const Dashboard = lazy(() => import("./Dashboard/Dashboard"));
+const Databases = lazy(() => import("./Databases/Databases"));
 
 // Let's get this party started
 const store = createStore(rootReducer);
@@ -22,10 +25,12 @@ const store = createStore(rootReducer);
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <Switch>
-        <Databases route="/databases" />
-        <Dashboard route="*" />
-      </Switch>
+      <Suspense fallback={<Loading />}>
+        <Switch>
+          <Databases route="/databases" />
+          <Dashboard route="*" />
+        </Switch>
+      </Suspense>
     </Router>
   </Provider>,
   document.getElementById("app")
