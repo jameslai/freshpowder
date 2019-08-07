@@ -14,10 +14,14 @@ import { fetchDatabases } from "./databasesActions";
 
 export default function Databases() {
   const dispatch = useDispatch();
-  const databases = useSelector(state => state.databases);
-  console.log(databases);
+  const { isFetched, databases } = useSelector(state => {
+    return {
+      isFetched: state.databases.isFetched,
+      databases: state.databases.databases
+    };
+  });
   useEffect(() => {
-    dispatch(fetchDatabases());
+    if (!isFetched) dispatch(fetchDatabases());
   }, []);
 
   return (
@@ -52,7 +56,7 @@ const renderDatabases = databases => {
     const { title } = database;
     return (
       <div>
-        <h4>{title}</h4>
+        <h5>{title}</h5>
       </div>
     );
   });

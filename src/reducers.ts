@@ -1,7 +1,7 @@
-const initialState = {
-  databases: []
-};
+import { combineReducers } from "redux";
 
-export function rootReducer(state = initialState, action) {
-  return state;
-}
+import databases from "./Databases/databasesReducers";
+
+export const rootReducer = combineReducers({
+  databases
+});

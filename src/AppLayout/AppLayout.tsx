@@ -31,11 +31,23 @@ export default function AppLayout() {
   );
 }
 
+const onDatabasesMouseEnter = () => {
+  import("../Databases/Databases");
+};
+
 const renderNav = () => {
   return (
-    <nav>
-      <NavLink to="/">Dashboard</NavLink>
-      <NavLink to="/databases">Databases</NavLink>
+    <nav className="nav nav-tabs">
+      <li className="nav-item">
+        <NavLink to="/" exact className="nav-link">
+          Dashboard
+        </NavLink>
+      </li>
+      <li className="nav-item" onMouseEnter={onDatabasesMouseEnter}>
+        <NavLink className="nav-link" to="/databases">
+          Databases
+        </NavLink>
+      </li>
     </nav>
   );
 };
