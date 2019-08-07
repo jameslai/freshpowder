@@ -2,14 +2,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
-import Layout from "./Layout/Layout";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import AppLayout from "./AppLayout/AppLayout";
 
 /* Internal */
 import { rootReducer } from "./reducers";
 
 // Let's get this party started
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 /**
  * Entrypoint for our application. Is the only part which should be aware of
@@ -17,7 +18,7 @@ const store = createStore(rootReducer);
  */
 ReactDOM.render(
   <Provider store={store}>
-    <Layout />
+    <AppLayout />
   </Provider>,
   document.getElementById("app")
 );
