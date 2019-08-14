@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import { MemoizedDatabasesList } from "./DatabasesList";
+const DatabasesCreate = lazy(() => import("../Databases/CreateDatabase"));
 
 /**
  * Primary renderer
@@ -17,10 +18,12 @@ export default function() {
     <>
       <Router>
         <h1>Databases</h1>
-        {renderNav()}
-        <Switch>
-          <Route path="/databases/history" />
-        </Switch>
+        <div className="my-3">
+          <NavLink to="/databases/create" className="btn btn-primary">
+            Create Database
+          </NavLink>
+        </div>
+        <Route path="/databases/create" component={DatabasesCreate} />
         <MemoizedDatabasesList />
       </Router>
     </>

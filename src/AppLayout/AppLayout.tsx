@@ -37,7 +37,7 @@ const onDatabasesMouseEnter = () => {
 
 const renderNav = () => {
   return (
-    <nav className="nav nav-tabs">
+    <nav className="nav nav-tabs my-3">
       <li className="nav-item">
         <NavLink to="/" exact className="nav-link">
           Dashboard

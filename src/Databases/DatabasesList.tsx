@@ -14,14 +14,18 @@ export default function DatabasesList() {
     if (!isFetched) dispatch(fetchDatabases());
   }, []);
 
-  return databases.map(database => {
-    const { title } = database;
-    return (
-      <div key={database.id}>
-        <p>{title}</p>
-      </div>
-    );
-  });
+  return (
+    <ul className="list-group">
+      {databases.map(database => {
+        const { title } = database;
+        return (
+          <li className="list-group-item" key={database.id}>
+            {title}
+          </li>
+        );
+      })}
+    </ul>
+  );
 }
 
 export const MemoizedDatabasesList = memo(DatabasesList);
