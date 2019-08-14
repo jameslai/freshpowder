@@ -4,9 +4,9 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import AppLayout from "./AppLayout/AppLayout";
 
 /* Internal */
+import AppLayout from "./AppLayout/AppLayout";
 import { rootReducer } from "./reducers";
 
 // Let's get this party started

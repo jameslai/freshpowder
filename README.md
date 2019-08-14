@@ -8,7 +8,12 @@
 - Uses React Hooks with Redux
 - Single application state provided by Redux
 - React functional components have been broken up into multiple functions
+- Directory structure and file naming proposal
 
 ## Starting
 
 Use `npm run watch` to watch JS files, `npm start` to start a web server for serving local requests and head to http://localhost:8000`
+
+## Missing Concerns
+
+ - CSS/styling
