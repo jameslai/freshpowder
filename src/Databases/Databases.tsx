@@ -6,14 +6,13 @@ import {
   NavLink
 } from "react-router-dom";
 
-import { MemoizedDatabasesList } from './DatabasesList'
+import { MemoizedDatabasesList } from "./DatabasesList";
 
 /**
  * Primary renderer
  */
 
 export default function() {
-
   return (
     <>
       <Router>

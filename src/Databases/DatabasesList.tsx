@@ -1,9 +1,8 @@
-import React, { useEffect, memo } from 'react'
+import React, { useEffect, memo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchDatabases } from "./databasesActions";
 
 export default function DatabasesList() {
-
   const dispatch = useDispatch();
   const { isFetched, databases } = useSelector(state => {
     return {
@@ -19,11 +18,10 @@ export default function DatabasesList() {
     const { title } = database;
     return (
       <div key={database.id}>
-        <h5>{title}</h5>
+        <p>{title}</p>
       </div>
     );
   });
-
 }
 
-export const MemoizedDatabasesList = memo(DatabasesList)
+export const MemoizedDatabasesList = memo(DatabasesList);
